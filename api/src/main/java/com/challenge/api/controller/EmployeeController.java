@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -52,8 +54,8 @@ public class EmployeeController {
      * @return Newly created Employee
      */
     @PostMapping("/")
-    public Employee createEmployee(@Valid @RequestBody EmployeeObject requestBody) {
-
-        return employeeService.addEmployee(requestBody);
+    public ResponseEntity<Employee> createEmployee(@Valid @RequestBody EmployeeObject requestBody) {
+        Employee created = employeeService.addEmployee(requestBody);
+        return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 }
