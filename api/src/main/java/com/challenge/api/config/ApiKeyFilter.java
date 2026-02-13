@@ -31,7 +31,7 @@ public class ApiKeyFilter extends OncePerRequestFilter {
         }
 
         // Log this call to some sort of database to keep track of usage
-        logger.info("apiKey: " + apiKey + "request: " + request.getRequestURI());
+        logger.info("apiKey: " + apiKey + " | request: " + request.getRequestURI());
         filterChain.doFilter(request, response);
     }
 }
