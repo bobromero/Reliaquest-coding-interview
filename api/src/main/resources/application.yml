@@ -1,2 +1,3 @@
 spring.application.name: entry-level-java-challenge
 spring.profiles.active: dev
+api.keys: test-api-key1, test-api-key2
