@@ -3,6 +3,7 @@ package com.challenge.api.controller;
 import com.challenge.api.model.Employee;
 import com.challenge.api.model.EmployeeObject;
 import com.challenge.api.service.EmployeeService;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
@@ -51,8 +52,8 @@ public class EmployeeController {
      * @return Newly created Employee
      */
     @PostMapping("/")
-    public Employee createEmployee(@RequestBody EmployeeObject requestBody) {
-        log.info(requestBody.toString());
+    public Employee createEmployee(@Valid @RequestBody EmployeeObject requestBody) {
+
         return employeeService.addEmployee(requestBody);
     }
 }
