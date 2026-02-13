@@ -5,6 +5,8 @@ plugins {
 dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compileOnly 'org.projectlombok:lombok:latest_version'
+    implementation 'jakarta.validation:jakarta.validation-api:latest_version'
+    implementation 'org.hibernate.validator:hibernate-validator:latest_version'
 }
 
 springBoot {
