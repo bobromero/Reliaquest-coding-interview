@@ -1,1 +1,2 @@
 spring.application.name: entry-level-java-challenge
+spring.profiles.active: dev

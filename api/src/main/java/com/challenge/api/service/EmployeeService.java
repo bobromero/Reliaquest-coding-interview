@@ -1,32 +1,31 @@
 package com.challenge.api.service;
 
 import com.challenge.api.model.Employee;
-import java.util.ArrayList;
+import com.challenge.api.repository.EmployeeRepository;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmployeeService {
-    List<Employee> employees = new ArrayList<>();
+    @Autowired
+    private final EmployeeRepository employeeRepository;
 
-    public EmployeeService() {}
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     public List<Employee> getEmployees() {
-        return employees; // replace with api call to old system or repository
+        return employeeRepository.getAllEmployees();
     }
 
     public Employee getEmployeeById(UUID uuid) {
-        for (Employee employee : getEmployees()) {
-            if (employee.getUuid().equals(uuid)) {
-                return employee;
-            }
-        }
-        return null;
+
+        return employeeRepository.getEmployeeByUUID(uuid);
     }
 
     public Employee addEmployee(Employee employee) {
-        employees.add(employee);
-        return employee;
+        return employeeRepository.addEmployee(employee);
     }
 }
